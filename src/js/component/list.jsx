@@ -29,7 +29,7 @@ const List = () => {
 			.then((response) => response.json())
       		.then((data) => setNueva(data))
 			
-			console.log(tareas);
+			
     },[]);
 	
 	useEffect (()=>{
@@ -43,6 +43,7 @@ const List = () => {
 			<form onSubmit={(event)=>{
 				event.preventDefault();
 				setNueva([...tareas,event.target[0].value])
+				event.target[0].value = "";
 				setInput("")
 			}}>
 				<li>
@@ -55,7 +56,8 @@ const List = () => {
 			
 			
 			{tareas.map((value,index,arr)=>{
-				return <li key={index}>{value.label} 
+				console.log(value, index, arr);
+				return <li key={index}>{value} 
 					<i  class="far fa-trash-alt" 
 						onClick={() => setNueva(tareas.filter((value, currentIndex) => index != currentIndex))}>
 						
