@@ -5,36 +5,39 @@ const List = () => {
 	const [tareas, setNueva] = useState ([]);
 	const [input, setInput] = useState ("");
 	
-	function Actualizar() { 
-		var myHeaders = new Headers();
-			myHeaders.append("Content-Type", "application/json");
-
-			var raw = JSON.stringify(tareas);
-
-			var requestOptions = {
-			method: 'PUT',
-			headers: myHeaders,
-			body: raw,
-			redirect: 'follow'
-			};
-
-			fetch("http://assets.breatheco.de/apis/fake/todos/user/nmoz88", requestOptions)
-			.then(response => response.text())
-			.then(result => console.log(result))
-			.catch(error => console.log('error', error));
-
-	}
-    useEffect (()=>{
+	useEffect (()=>{
         fetch("http://assets.breatheco.de/apis/fake/todos/user/nmoz88")
 			.then((response) => response.json())
-      		.then((data) => setNueva(data))
+      		.then((data) => setNueva(data));
 			
-			
+			console.log(tareas);
     },[]);
+
+
+	// function Actualizar() { 
+	// 	var myHeaders = new Headers();
+	// 		myHeaders.append("Content-Type", "application/json");
+
+	// 		var raw = JSON.stringify(tareas);
+
+	// 		var requestOptions = {
+	// 		method: 'PUT',
+	// 		headers: myHeaders,
+	// 		body: raw,
+	// 		redirect: 'follow'
+	// 		};
+
+	// 		fetch("http://assets.breatheco.de/apis/fake/todos/user/nmoz88", requestOptions)
+	// 		.then(response => response.text())
+	// 		.then(result => console.log(result))
+	// 		.catch(error => console.log('error', error));
+
+	// }
+    
 	
-	useEffect (()=>{
-		Actualizar();
-	},[tareas]);
+	// useEffect (()=>{
+	// 	Actualizar();
+	// },[tareas]);
 
 	return (
 		<div className="container">
