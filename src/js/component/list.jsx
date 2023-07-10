@@ -6,38 +6,38 @@ const List = () => {
 	const [input, setInput] = useState ("");
 	
 	useEffect (()=>{
-        fetch("http://assets.breatheco.de/apis/fake/todos/user/nmoz88")
-			.then((response) => response.json())
-      		.then((data) => setNueva(data));
+        fetch('http://assets.breatheco.de/apis/fake/todos/user/nmoz88')
+  			.then(response => response.json())
+  			.then(data => console.log(data));
 			
-			console.log(tareas);
+		
     },[]);
 
 
-	// function Actualizar() { 
-	// 	var myHeaders = new Headers();
-	// 		myHeaders.append("Content-Type", "application/json");
+	function Actualizar() { 
+		var myHeaders = new Headers();
+			myHeaders.append("Content-Type", "application/json");
 
-	// 		var raw = JSON.stringify(tareas);
+			var raw = JSON.stringify(tareas);
 
-	// 		var requestOptions = {
-	// 		method: 'PUT',
-	// 		headers: myHeaders,
-	// 		body: raw,
-	// 		redirect: 'follow'
-	// 		};
+			var requestOptions = {
+			method: 'PUT',
+			headers: myHeaders,
+			body: raw,
+			redirect: 'follow'
+			};
 
-	// 		fetch("http://assets.breatheco.de/apis/fake/todos/user/nmoz88", requestOptions)
-	// 		.then(response => response.text())
-	// 		.then(result => console.log(result))
-	// 		.catch(error => console.log('error', error));
+			fetch("http://assets.breatheco.de/apis/fake/todos/user/nmoz88", requestOptions)
+			.then(response => response.text())
+			.then(result => console.log(result))
+			.catch(error => console.log('error', error));
 
-	// }
+	}
     
 	
-	// useEffect (()=>{
-	// 	Actualizar();
-	// },[tareas]);
+	useEffect (()=>{
+		Actualizar();
+	},[tareas]);
 
 	return (
 		<div className="container">
